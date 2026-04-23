@@ -39,8 +39,3 @@ pytest
 5. Open the UI:
 
 - Visit `http://127.0.0.1:8000/app`
-
-## Notes
-
-- The project is organized to be easy to read and easy to work on together.
-- The main deliverable is a command-line runnable API, not a notebook.
