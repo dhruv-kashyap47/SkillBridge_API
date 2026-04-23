@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillBridge – Attendance Management System</title>
+    <meta name="description" content="A premium Attendance Management System">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app-container">
+        <!-- Auth View -->
+        <div id="auth-view" class="view active">
+            <div class="glass-card auth-card">
+                <div class="auth-header">
+                    <div class="logo-icon">SB</div>
+                    <h1>SkillBridge</h1>
+                    <p>Sign in to your account</p>
+                </div>
+                <form id="login-form">
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required placeholder="name@example.com">
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" required placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="btn primary-btn" id="login-btn">
+                        <span>Sign In</span>
+                        <div class="spinner hidden"></div>
+                    </button>
+                    <div id="login-error" class="error-msg hidden"></div>
+                </form>
+                
+                <form id="signup-form" class="hidden">
+                    <div class="input-group">
+                        <label for="signup-name">Full Name</label>
+                        <input type="text" id="signup-name" required placeholder="John Doe">
+                    </div>
+                    <div class="input-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" required placeholder="name@example.com">
+                    </div>
+                    <div class="input-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" required placeholder="••••••••">
+                    </div>
+                    <div class="input-group">
+                        <label for="signup-role">Role</label>
+                        <select id="signup-role" required>
+                            <option value="student">Student</option>
+                            <option value="trainer">Trainer</option>
+                            <option value="institution">Institution</option>
+                            <option value="programme_manager">Programme Manager</option>
+                            <option value="monitoring_officer">Monitoring Officer</option>
+                        </select>
+                    </div>
+                    <div class="input-group hidden" id="institution-id-group">
+                        <label for="signup-institution-id">Institution ID</label>
+                        <input type="number" id="signup-institution-id" placeholder="e.g. 1">
+                    </div>
+                    <button type="submit" class="btn primary-btn" id="signup-btn">
+                        <span>Create Account</span>
+                        <div class="spinner hidden"></div>
+                    </button>
+                    <div id="signup-error" class="error-msg hidden"></div>
+                </form>
+                
+                <div class="auth-footer">
+                    <p id="auth-toggle-text">Need an account? <a href="#" id="toggle-auth">Sign up</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard View -->
+        <div id="dashboard-view" class="view hidden">
+            <nav class="sidebar glass-panel">
+                <div class="sidebar-header">
+                    <div class="logo-icon small">SB</div>
+                    <h2>SkillBridge</h2>
+                </div>
+                <div class="user-profile">
+                    <div class="avatar" id="user-avatar">?</div>
+                    <div class="user-info">
+                        <div class="user-role" id="user-role-display">Role</div>
+                    </div>
+                </div>
+                <ul class="nav-links" id="nav-links">
+                    <!-- Links populated dynamically based on role -->
+                </ul>
+                <div class="sidebar-footer">
+                    <button id="logout-btn" class="btn outline-btn logout">Logout</button>
+                </div>
+            </nav>
+
+            <main class="main-content">
+                <header class="top-nav glass-panel">
+                    <h2 id="page-title">Dashboard</h2>
+                    <div class="actions" id="header-actions">
+                        <!-- Contextual actions like "Create Batch", "New Session" -->
+                    </div>
+                </header>
+                
+                <div class="content-area glass-panel" id="content-area">
+                    <!-- Content injected here -->
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Modals (Hidden by default) -->
+    <div id="modal-overlay" class="modal-overlay hidden">
+        <div class="glass-card modal-card" id="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Modal Title</h3>
+                <button class="close-modal" id="close-modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Modal forms injected here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

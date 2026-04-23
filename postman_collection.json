@@ -1,0 +1,365 @@
+{
+  "info": {
+    "name": "SkillBridge API",
+    "_postman_id": "7c9f3a61-5b2e-4f7f-b3f2-0e3cb1f2d111",
+    "description": "Postman collection for testing SkillBridge end to end.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Signup - Programme Manager",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Programme Manager\",\n  \"email\": \"pm@test.com\",\n  \"password\": \"pass\",\n  \"role\": \"programme_manager\"\n}"
+            },
+            "url": "{{baseUrl}}/auth/signup"
+          }
+        },
+        {
+          "name": "Login - Programme Manager",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"pm@test.com\",\n  \"password\": \"pass\"\n}"
+            },
+            "url": "{{baseUrl}}/auth/login"
+          }
+        },
+        {
+          "name": "Signup - Institution",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Institution 1\",\n  \"email\": \"inst1@test.com\",\n  \"password\": \"pass\",\n  \"role\": \"institution\",\n  \"institution_id\": 1\n}"
+            },
+            "url": "{{baseUrl}}/auth/signup"
+          }
+        },
+        {
+          "name": "Login - Institution",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"inst1@test.com\",\n  \"password\": \"pass\"\n}"
+            },
+            "url": "{{baseUrl}}/auth/login"
+          }
+        },
+        {
+          "name": "Signup - Trainer",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Trainer 1\",\n  \"email\": \"trainer@test.com\",\n  \"password\": \"pass\",\n  \"role\": \"trainer\"\n}"
+            },
+            "url": "{{baseUrl}}/auth/signup"
+          }
+        },
+        {
+          "name": "Login - Trainer",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"trainer@test.com\",\n  \"password\": \"pass\"\n}"
+            },
+            "url": "{{baseUrl}}/auth/login"
+          }
+        },
+        {
+          "name": "Signup - Student",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Student 1\",\n  \"email\": \"student@test.com\",\n  \"password\": \"pass\",\n  \"role\": \"student\"\n}"
+            },
+            "url": "{{baseUrl}}/auth/signup"
+          }
+        },
+        {
+          "name": "Login - Student",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"student@test.com\",\n  \"password\": \"pass\"\n}"
+            },
+            "url": "{{baseUrl}}/auth/login"
+          }
+        },
+        {
+          "name": "Signup - Monitoring Officer",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Monitoring Officer\",\n  \"email\": \"monitor@test.com\",\n  \"password\": \"pass\",\n  \"role\": \"monitoring_officer\"\n}"
+            },
+            "url": "{{baseUrl}}/auth/signup"
+          }
+        },
+        {
+          "name": "Login - Monitoring Officer",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"monitor@test.com\",\n  \"password\": \"pass\"\n}"
+            },
+            "url": "{{baseUrl}}/auth/login"
+          }
+        },
+        {
+          "name": "Get Monitoring Token",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{monitoringOfficerToken}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"api_key\": \"{{monitoringApiKey}}\"\n}"
+            },
+            "url": "{{baseUrl}}/auth/monitoring-token"
+          }
+        }
+      ]
+    },
+    {
+      "name": "RBAC",
+      "item": [
+        {
+          "name": "Programme Summary",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{pmToken}}" }
+            ],
+            "url": "{{baseUrl}}/programme/summary"
+          }
+        },
+        {
+          "name": "Institution Summary",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{institutionToken}}" }
+            ],
+            "url": "{{baseUrl}}/institutions/{{institutionId}}/summary"
+          }
+        },
+        {
+          "name": "List Institutions",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{pmToken}}" }
+            ],
+            "url": "{{baseUrl}}/institutions"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Batches",
+      "item": [
+        {
+          "name": "Create Batch - PM",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{pmToken}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"PM Batch A\",\n  \"institution_id\": {{institutionId}}\n}"
+            },
+            "url": "{{baseUrl}}/batches/"
+          }
+        },
+        {
+          "name": "Create Batch - Institution",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{institutionToken}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Institution Batch A\",\n  \"institution_id\": {{institutionId}}\n}"
+            },
+            "url": "{{baseUrl}}/batches/"
+          }
+        },
+        {
+          "name": "Batch Summary",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{pmToken}}" }
+            ],
+            "url": "{{baseUrl}}/batches/{{batchId}}/summary"
+          }
+        },
+        {
+          "name": "Generate Invite",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{pmToken}}" }
+            ],
+            "url": "{{baseUrl}}/batches/{{batchId}}/invite"
+          }
+        },
+        {
+          "name": "Join Batch",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{studentToken}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"{{inviteToken}}\"\n}"
+            },
+            "url": "{{baseUrl}}/batches/join"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Sessions",
+      "item": [
+        {
+          "name": "Create Session",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{trainerToken}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"batch_id\": {{batchId}},\n  \"title\": \"Intro Session\",\n  \"date\": \"2026-04-22\",\n  \"start_time\": \"10:00:00\",\n  \"end_time\": \"12:00:00\"\n}"
+            },
+            "url": "{{baseUrl}}/sessions/"
+          }
+        },
+        {
+          "name": "Session Attendance",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{trainerToken}}" }
+            ],
+            "url": "{{baseUrl}}/sessions/{{sessionId}}/attendance"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Attendance",
+      "item": [
+        {
+          "name": "Mark Attendance - Student",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{studentToken}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"session_id\": {{sessionId}},\n  \"student_id\": {{studentId}},\n  \"status\": \"present\"\n}"
+            },
+            "url": "{{baseUrl}}/attendance/mark"
+          }
+        },
+        {
+          "name": "Mark Attendance - Trainer",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{trainerToken}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"session_id\": {{sessionId}},\n  \"student_id\": {{studentId}},\n  \"status\": \"present\"\n}"
+            },
+            "url": "{{baseUrl}}/attendance/mark"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Monitoring",
+      "item": [
+        {
+          "name": "Monitoring Attendance",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{monitoringToken}}" }
+            ],
+            "url": "{{baseUrl}}/monitoring/attendance"
+          }
+        },
+        {
+          "name": "Monitoring Attendance POST Should 405",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{monitoringToken}}" }
+            ],
+            "url": "{{baseUrl}}/monitoring/attendance"
+          }
+        }
+      ]
+    }
+  ]
+}
